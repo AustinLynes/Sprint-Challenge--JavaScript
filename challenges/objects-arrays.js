@@ -5,6 +5,8 @@
   Use this pattern to create your objects: 
   object name, diet, weight, length, period
 */
+
+
 class dinosaur{
   constructor(attrs){
     this.name = attrs.name;
@@ -28,6 +30,20 @@ const tyrannosaurus= new dinosaur({
   period:"Late Cretaceous",
 
 });
+
+// const tyrannosaurus = {
+//   name:'tyrannosaurus',
+//   diet:'carnivorous',
+//   wieght:'7000kg',
+//   length:'12m',
+//   period:'Late Cretaceous',
+//   roar: function(){
+//     return "RAWERSRARARWERSARARARRRR!";
+//   }
+// }
+
+
+
 // stegosaurus, herbivorous, 2000kg, 9m, Late Jurassic
 
 const stegosaurus= new dinosaur({
@@ -38,6 +54,14 @@ const stegosaurus= new dinosaur({
   period:"Late Jurassic"
 });
 
+// const stegosaurus = {
+//   name:'stegosaurus',
+//   diet:'herbivorous',
+//   wieght:'2000kg',
+//   length:'9m',
+//   period:'Late Jurassic',
+// }
+
 // velociraptor, carnivorous, 15kg, 1.8m, Late Cretaceous
 
 const velociraptor= new dinosaur({
@@ -47,6 +71,15 @@ const velociraptor= new dinosaur({
   length:"1.8m",
   period:"Late Cretaceous"
 });
+
+// const velociraptor = {
+//   name:'velociraptor',
+//   diet:'carnivorous',
+//   wieght:'15kg',
+//   length:'1.8m',
+//   period:'Late Cretaceous',
+// }
+
 
 // Using your dinosaur objects, log answers to these questions:
 
@@ -110,12 +143,12 @@ console.log(contactInfo);
 
 /* Request 3: Find out how many universities have the string "Uni" included in their name. Create a new array called uni that contains them all. Log the result. */
 const uni = [];
-
-for(let i =0;i<universities.length;i++){
- if(universities[i] % "uni"){
-   uni.push(universities[[i]]);
- }
+for (let i = 0; i < graduates.length; i++) {
+  if (graduates[i]["university"].includes('Uni')) {
+    uni.push(graduates[i]["university"]);
+  }
 }
+
 console.log(uni);
 
 
@@ -137,10 +170,16 @@ zooAnimals = [{"animal_name":"Jackal, asiatic","population":5,"scientific_name":
 
 /* Request 1: .forEach()
 
-The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  The individual values in the array should look like this "Name: Jackal, asiatic, Scientific: Canis aureus."
+The zoo wants to display both the scientific name and the animal name in front of the habitats.  Return an array with only the animal and scientific names in it.  The individual values in the array should look like this
+ "Name: Jackal, asiatic, Scientific: Canis aureus."
 
 */
 const animalNames = [];
+
+zooAnimals.forEach(animal => {
+  animalNames.push(`Name: ${animal.animal_name}, Scientific: ${animal.scientific_name}`)
+});
+
 console.log(animalNames);
 
 /* Request 2: .map()    
@@ -150,14 +189,19 @@ The zoos need a list of all their animal's names (names only, not scientific) co
 */
 
 const lowerCase = [];
+
+lowerCase.push(zooAnimals.map(name => name.animal_name.toLowerCase()));
 console.log(lowerCase); 
 
 /* Request 3: .filter() 
 
-The zoos are concenred about animals with a lower population count. Find out which animals have a population less than 5.
+The zoos are concenred about animals with a lower population count. Find out which animals have
+ a population less than 5.
 
 */
 const lowerPopulation = [];
+
+lowerPopulation.push(zooAnimals.filter(pop => pop.population < 5))
 console.log(lowerPopulation);
 
 /* Request 4: .reduce() 
@@ -165,7 +209,9 @@ console.log(lowerPopulation);
 The zoos need to know their total animal population across the United States.  Find the total population from all the zoos using the .reduce() method.
 
 */
-const populationTotal = 0;
+const populationTotal = zooAnimals.reduce(function(totalAnimals, item){
+  return totalAnimals + item.population;
+}, 0);
 console.log(populationTotal);
 
 
