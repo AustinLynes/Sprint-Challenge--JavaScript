@@ -7,18 +7,34 @@
   * In the body of the function return the callback with the two parameters that you created
 */
 
+function consume(a, b, cb){
+  return(cb(a,b));
+
+}
 
 /* Step 2: Create several functions to callback with consume();
   * Create a function named add that returns the sum of two numbers
   * Create a function named multiply that returns the product of two numbers 
   * Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!"
 */
+//add
+let add = (num_1,num_2)=>{
+  console.log(num_1 + num_2);
+}
+//multiply
+let multiply = (num_1,num_2)=>{
+  console.log( num_1*num_2);
+}
+//greeting
 
+let greeting = (f_n, l_n)=>{
+  console.log(`Hello ${f_n} ${l_n}, Nice to Meet You!`)
+}
 
 /* Step 3: Check your work by un-commenting the following calls to consume(): */
-// consume(2,2,add); // 4
-// consume(10,16,multiply); // 160
-// consume("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
+consume(2,2,add); // 4
+ consume(10,16,multiply); // 160
+ consume("Mary","Poppins", greeting); // Hello Mary Poppins, nice to meet you!
 
 
 // ==== Closures ==== 
@@ -27,6 +43,8 @@
 
 // Explanation: 
 
+  //  nestedFunction can access internal because it is in the same scope as internal and it is used before 
+  // it is deleted from memory
 
 const external = "I'm outside the function";
 
